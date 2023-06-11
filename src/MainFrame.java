@@ -5,45 +5,24 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
-  public void initialize() {
-    JPanel panelPrincipal = new JPanel();
+  // Define os componentes do formulário
+  JTextField tfNomeEducando = new JTextField("");
+  JComboBox cbEtapa = new JComboBox();
+  JComboBox cbUnidade = new JComboBox();
+
+  private JPanel CriaPainelPrincipal() {
+    JPanel painelPrincipal = new JPanel();
     int linhas = 20;
     int colunas = 1;
     int margemHorizontal = 5;
     int margemVertical = 5;
-    panelPrincipal.setLayout(new GridLayout(linhas, colunas, margemHorizontal, margemVertical));
+    painelPrincipal.setLayout(new GridLayout(linhas, colunas, margemHorizontal, margemVertical));
+    return painelPrincipal;
+  }
 
-    this.setTitle("PAQ - Etapa 3");
-
-    // Formulário
-    JLabel lbBNomeEducando = new JLabel("Nome do educando:");
-    panelPrincipal.add(lbBNomeEducando);
-
-    JTextField tfNomeEducando = new JTextField("");
-    panelPrincipal.add(tfNomeEducando);
-
-    JLabel lbEtapa = new JLabel("Etapa:");
-    panelPrincipal.add(lbEtapa);
-
-    JComboBox cbEtapa = new JComboBox();
-    cbEtapa.addItem("Selecione...");
-    cbEtapa.addItem("1");
-    cbEtapa.addItem("2");
-    cbEtapa.addItem("3");
-    panelPrincipal.add(cbEtapa);
-
-    JLabel lbUnidade = new JLabel("Unidade:");
-    panelPrincipal.add(lbUnidade);
-
-    JComboBox cbUnidade = new JComboBox();
-    cbUnidade.addItem("Selecione...");
-    cbUnidade.addItem("SC 401");
-    cbUnidade.addItem("Pedra Branca");
-    panelPrincipal.add(cbUnidade);
-
-    // Botões
-    JPanel panelBotoes = new JPanel();
-    panelBotoes.setLayout(new GridLayout(1, 1, 5, 5));
+  private JPanel CriaPainelBotoes() {
+    JPanel painelBotoes = new JPanel();
+    painelBotoes.setLayout(new GridLayout(1, 1, 5, 5));
 
     JButton button = new JButton("Salvar");
     button.addActionListener(new ActionListener() {
@@ -54,9 +33,39 @@ public class MainFrame extends JFrame {
         System.out.println("Unidade: " + cbUnidade.getSelectedItem());
       }
     });
-    panelBotoes.add(button);
+    painelBotoes.add(button);
+    return painelBotoes;
+  }
 
-    panelPrincipal.add(panelBotoes);
+  private JPanel CriaPainelFormulario() {
+    JPanel panelFormulario = new JPanel();
+    panelFormulario.setLayout(new GridLayout(1, 1, 5, 5));
+    panelFormulario.add(new JLabel("Nome do educando:"));
+    panelFormulario.add(tfNomeEducando);
+
+    panelFormulario.add(new JLabel("Etapa:"));
+    cbEtapa.addItem("Selecione...");
+    cbEtapa.addItem("1");
+    cbEtapa.addItem("2");
+    cbEtapa.addItem("3");
+    panelFormulario.add(cbEtapa);
+
+    panelFormulario.add(new JLabel("Unidade:"));
+    cbUnidade.addItem("Selecione...");
+    cbUnidade.addItem("SC 401");
+    cbUnidade.addItem("Pedra Branca");
+    panelFormulario.add(cbUnidade);
+
+    return panelFormulario;
+  }
+
+  public void Initialize() {
+    JPanel panelPrincipal = CriaPainelPrincipal();
+
+    this.setTitle("PAQ - Etapa 3");
+
+    panelPrincipal.add(CriaPainelFormulario());
+    panelPrincipal.add(CriaPainelBotoes());
 
     this.add(panelPrincipal);
 
@@ -67,6 +76,6 @@ public class MainFrame extends JFrame {
 
   public static void main(String[] args) {
     MainFrame mainFrame = new MainFrame();
-    mainFrame.initialize();
+    mainFrame.Initialize();
   }
 }
