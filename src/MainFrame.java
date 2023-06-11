@@ -2,11 +2,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class MainFrame extends JFrame {
   public void initialize() {
@@ -29,14 +25,21 @@ public class MainFrame extends JFrame {
     JLabel lbEtapa = new JLabel("Etapa:");
     panelPrincipal.add(lbEtapa);
 
-    JTextField tfEtapa = new JTextField("");
-    panelPrincipal.add(tfEtapa);
+    JComboBox cbEtapa = new JComboBox();
+    cbEtapa.addItem("Selecione...");
+    cbEtapa.addItem("1");
+    cbEtapa.addItem("2");
+    cbEtapa.addItem("3");
+    panelPrincipal.add(cbEtapa);
 
     JLabel lbUnidade = new JLabel("Unidade:");
     panelPrincipal.add(lbUnidade);
 
-    JTextField tfUnidade = new JTextField("");
-    panelPrincipal.add(tfUnidade);
+    JComboBox cbUnidade = new JComboBox();
+    cbUnidade.addItem("Selecione...");
+    cbUnidade.addItem("SC 401");
+    cbUnidade.addItem("Pedra Branca");
+    panelPrincipal.add(cbUnidade);
 
     // Botões
     JPanel panelBotoes = new JPanel();
@@ -45,7 +48,10 @@ public class MainFrame extends JFrame {
     JButton button = new JButton("Salvar");
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        System.out.println("Clicou no botão Salvar" + "!");
+        System.out.println("Clicou no botão Salvar!");
+        System.out.println("Nome do educando: " + tfNomeEducando.getText());
+        System.out.println("Etapa: " + cbEtapa.getSelectedItem());
+        System.out.println("Unidade: " + cbUnidade.getSelectedItem());
       }
     });
     panelBotoes.add(button);
