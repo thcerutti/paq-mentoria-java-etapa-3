@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 
   private JPanel CriaPainelPrincipal() {
     JPanel painelPrincipal = new JPanel();
-    int linhas = 20;
+    int linhas = 2;
     int colunas = 1;
     int margemHorizontal = 5;
     int margemVertical = 5;
@@ -61,7 +61,7 @@ public class MainFrame extends JFrame {
 
   private JPanel CriaPainelFormulario() {
     JPanel panelFormulario = new JPanel();
-    panelFormulario.setLayout(new GridLayout(1, 1, 5, 5));
+    panelFormulario.setLayout(new GridLayout(3, 1, 5, 5));
     panelFormulario.add(new JLabel("Nome do educando:"));
     panelFormulario.add(tfNomeEducando);
 
