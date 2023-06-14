@@ -1,14 +1,18 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import repositorios.EtapasRepository;
+import repositorios.UnidadesRepository;
 
 public class MainFrame extends JFrame {
   // Define os componentes do formulário
   JTextField tfNomeEducando = new JTextField("");
-  JComboBox cbEtapa = new JComboBox();
-  JComboBox cbUnidade = new JComboBox();
+  JComboBox<String> cbEtapa = new JComboBox<String>();
+  JComboBox<String> cbUnidade = new JComboBox<String>();
 
   private JPanel CriaPainelPrincipal() {
     JPanel painelPrincipal = new JPanel();
@@ -37,6 +41,24 @@ public class MainFrame extends JFrame {
     return painelBotoes;
   }
 
+  private ArrayList<String> ListarUnidades() {
+    var repositorio = new UnidadesRepository();
+    var unidades = new ArrayList<String>();
+    for (var unidade : repositorio.ListarUnidades()) {
+      unidades.add(String.format("%s - %s", unidade.getId(), unidade.getNome()));
+    }
+    return unidades;
+  }
+
+  private ArrayList<String> ListarTodasAsEtapas() {
+    var repositorio = new EtapasRepository();
+    var etapas = new ArrayList<String>();
+    for (var etapa : repositorio.ListarEtapas()) {
+      etapas.add(String.format("%s - %s", etapa.getId(), etapa.getNome()));
+    }
+    return etapas;
+  }
+
   private JPanel CriaPainelFormulario() {
     JPanel panelFormulario = new JPanel();
     panelFormulario.setLayout(new GridLayout(1, 1, 5, 5));
@@ -45,15 +67,16 @@ public class MainFrame extends JFrame {
 
     panelFormulario.add(new JLabel("Etapa:"));
     cbEtapa.addItem("Selecione...");
-    cbEtapa.addItem("1");
-    cbEtapa.addItem("2");
-    cbEtapa.addItem("3");
+    for (var etapa : ListarTodasAsEtapas()) {
+      cbEtapa.addItem(etapa);
+    }
     panelFormulario.add(cbEtapa);
 
     panelFormulario.add(new JLabel("Unidade:"));
     cbUnidade.addItem("Selecione...");
-    cbUnidade.addItem("SC 401");
-    cbUnidade.addItem("Pedra Branca");
+    for (var unidade : ListarUnidades()) {
+      cbUnidade.addItem(unidade);
+    }
     panelFormulario.add(cbUnidade);
 
     return panelFormulario;
