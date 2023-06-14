@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import modelos.EtapaDTO;
 
-public class EtapasDAO {
+public class EtapasDAO implements DaoInterface<EtapaDTO> {
   public ArrayList<EtapaDTO> Listar() {
     var etapas = new ArrayList<EtapaDTO>();
     etapas.add(new EtapaDTO(1, "Etapa 1"));

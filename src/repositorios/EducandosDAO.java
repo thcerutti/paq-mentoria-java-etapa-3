@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import modelos.EducandoDTO;
 
-public class EducandosDAO {
+public class EducandosDAO implements DaoInterface<EducandoDTO> {
 
   public ArrayList<EducandoDTO> Listar() {
     var educandos = new ArrayList<EducandoDTO>();

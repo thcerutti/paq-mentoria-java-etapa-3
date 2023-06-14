@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import modelos.UnidadeDTO;
 
-public class UnidadesDAO {
+public class UnidadesDAO implements DaoInterface<UnidadeDTO> {
   public ArrayList<UnidadeDTO> Listar() {
     var unidades = new ArrayList<UnidadeDTO>();
     unidades.add(new UnidadeDTO(1, "Pedra Branca"));
