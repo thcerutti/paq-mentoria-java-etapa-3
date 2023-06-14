@@ -28,15 +28,18 @@ UNIDADE
 
 ![Listagem de educando](./doc/lista.png)
 
-## Conceitos utilizados: DTO e DAO
+## Conceitos
+
+### DTO
 
 **DTO** significa "Data Transfer Object". É um objeto que contém dados que serão transferidos entre diferentes partes de um programa. Por exemplo, se você tem um programa que precisa enviar informações de um usuário para um servidor, você pode usar um DTO para encapsular essas informações em um objeto simples e fácil de enviar pela rede.
 
-Um exemplo de DTO em Java seria um objeto UsuarioDTO que contém os campos nome, email e idade. Esse objeto pode ser facilmente serializado e enviado pela rede para outro componente do programa.
+Um exemplo de DTO em Java seria um objeto `UsuarioDTO` que contém os campos `nome`, `email` e `idade`. Esse objeto pode ser facilmente serializado e enviado pela rede para outro componente do programa.
 
-Já o **DAO** significa "Data Access Object". É um objeto que fornece uma interface para acessar um banco de dados ou outra fonte de dados. O objetivo do DAO é abstrair o acesso aos dados para que outras partes do programa possam interagir com os dados sem precisar conhecer os detalhes de como eles são armazenados ou recuperados.
+### DAO
+**DAO** significa "Data Access Object". É um objeto que fornece uma interface para acessar um banco de dados ou outra fonte de dados. O objetivo do DAO é abstrair o acesso aos dados para que outras partes do programa possam interagir com os dados sem precisar conhecer os detalhes de como eles são armazenados ou recuperados.
 
-Um exemplo de DAO em Java seria um objeto UsuarioDAO que contém métodos para criar, ler, atualizar e excluir objetos de usuário em um banco de dados. Por exemplo, o método criarUsuario(UsuarioDTO usuario) pode ser usado para criar um novo usuário no banco de dados com base nas informações contidas no objeto UsuarioDTO.
+Um exemplo de DAO em Java seria um objeto `UsuarioDAO` que contém métodos para `criar`, `ler`, `atualizar` e `excluir` objetos de usuário em um banco de dados. Por exemplo, o método `criarUsuario(UsuarioDTO usuario)` pode ser usado para criar um novo usuário no banco de dados com base nas informações contidas no objeto `UsuarioDTO`.
 
 ---
 
