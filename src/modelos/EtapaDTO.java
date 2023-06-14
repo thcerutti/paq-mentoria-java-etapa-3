@@ -1,10 +1,10 @@
 package modelos;
 
-public class Etapa {
+public class EtapaDTO {
   private int id;
   private String nome;
 
-  public Etapa(int id, String nome) {
+  public EtapaDTO(int id, String nome) {
     this.id = id;
     this.nome = nome;
   }

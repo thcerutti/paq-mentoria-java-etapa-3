@@ -1,10 +1,10 @@
 package modelos;
 
-public class Unidade {
+public class UnidadeDTO {
   private int id;
   private String nome;
 
-  public Unidade(int id, String nome) {
+  public UnidadeDTO(int id, String nome) {
     this.id = id;
     this.nome = nome;
   }

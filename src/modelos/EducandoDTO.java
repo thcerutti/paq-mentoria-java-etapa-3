@@ -1,12 +1,12 @@
 package modelos;
 
-public class Educando {
+public class EducandoDTO {
   private int id;
   private String nomeCompleto;
-  private Etapa etapa;
-  private Unidade unidade;
+  private EtapaDTO etapa;
+  private UnidadeDTO unidade;
 
-  public Educando(int id, String nome, Etapa etapa, Unidade unidade) {
+  public EducandoDTO(int id, String nome, EtapaDTO etapa, UnidadeDTO unidade) {
     this.id = id;
     this.nomeCompleto = nome;
     this.etapa = etapa;
@@ -21,11 +21,11 @@ public class Educando {
     return this.nomeCompleto;
   }
 
-  public Etapa getEtapa() {
+  public EtapaDTO getEtapa() {
     return this.etapa;
   }
 
-  public Unidade getUnidade() {
+  public UnidadeDTO getUnidade() {
     return this.unidade;
   }
 }

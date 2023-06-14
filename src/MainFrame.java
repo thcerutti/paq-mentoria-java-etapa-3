@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import repositorios.EtapasRepository;
-import repositorios.UnidadesRepository;
+import repositorios.EtapasDAO;
+import repositorios.UnidadesDAO;
 
 public class MainFrame extends JFrame {
   // Define os componentes do formulário
@@ -42,18 +42,18 @@ public class MainFrame extends JFrame {
   }
 
   private ArrayList<String> ListarUnidades() {
-    var repositorio = new UnidadesRepository();
+    var repositorio = new UnidadesDAO();
     var unidades = new ArrayList<String>();
-    for (var unidade : repositorio.ListarUnidades()) {
+    for (var unidade : repositorio.Listar()) {
       unidades.add(String.format("%s - %s", unidade.getId(), unidade.getNome()));
     }
     return unidades;
   }
 
   private ArrayList<String> ListarTodasAsEtapas() {
-    var repositorio = new EtapasRepository();
+    var repositorio = new EtapasDAO();
     var etapas = new ArrayList<String>();
-    for (var etapa : repositorio.ListarEtapas()) {
+    for (var etapa : repositorio.Listar()) {
       etapas.add(String.format("%s - %s", etapa.getId(), etapa.getNome()));
     }
     return etapas;
