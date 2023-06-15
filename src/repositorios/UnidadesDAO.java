@@ -2,13 +2,18 @@ package repositorios;
 
 import java.util.ArrayList;
 
+import database.ConectorBancoDeDados;
 import modelos.UnidadeDTO;
 
 public class UnidadesDAO implements DaoInterface<UnidadeDTO> {
   public ArrayList<UnidadeDTO> Listar() {
+    var conector = new ConectorBancoDeDados();
+    var sql = "SELECT id, descricao FROM unidades";
+    var result = conector.Listar(sql);
     var unidades = new ArrayList<UnidadeDTO>();
-    unidades.add(new UnidadeDTO(1, "Pedra Branca"));
-    unidades.add(new UnidadeDTO(2, "SC-401"));
+    for (var linha : result) {
+      unidades.add(new UnidadeDTO(Integer.parseInt(linha[0]), linha[1]));
+    }
     return unidades;
   }
 
