@@ -2,17 +2,18 @@ package repositorios;
 
 import java.util.ArrayList;
 
+import database.ConectorBancoDeDados;
 import modelos.EtapaDTO;
 
 public class EtapasDAO implements DaoInterface<EtapaDTO> {
   public ArrayList<EtapaDTO> Listar() {
     var etapas = new ArrayList<EtapaDTO>();
-    etapas.add(new EtapaDTO(1, "Etapa 1"));
-    etapas.add(new EtapaDTO(2, "Etapa 2"));
-    etapas.add(new EtapaDTO(3, "Etapa 3"));
-    etapas.add(new EtapaDTO(4, "Escola da Nuvem"));
-    etapas.add(new EtapaDTO(5, "Jovem Programador SENAC"));
-
+    var conector = new ConectorBancoDeDados();
+    var sql = "SELECT id, descricao FROM etapas";
+    var result = conector.Listar(sql);
+    for (var linha : result) {
+      etapas.add(new EtapaDTO(Integer.parseInt(linha[0]), linha[1]));
+    }
     return etapas;
   }
 
