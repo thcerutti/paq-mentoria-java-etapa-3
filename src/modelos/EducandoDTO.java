@@ -6,7 +6,13 @@ public class EducandoDTO {
   private EtapaDTO etapa;
   private UnidadeDTO unidade;
 
-  public EducandoDTO(int id, String nome, EtapaDTO etapa, UnidadeDTO unidade) {
+  public EducandoDTO(String nome, EtapaDTO etapa, UnidadeDTO unidade) {
+    this.nomeCompleto = nome;
+    this.etapa = etapa;
+    this.unidade = unidade;
+  }
+
+  public EducandoDTO(Integer id, String nome, EtapaDTO etapa, UnidadeDTO unidade) {
     this.id = id;
     this.nomeCompleto = nome;
     this.etapa = etapa;

@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import modelos.EducandoDTO;
+import modelos.EtapaDTO;
 import repositorios.EtapasDAO;
 import repositorios.UnidadesDAO;
+import repositorios.EducandosDAO;
 
 public class MainFrame extends JFrame {
   // Define os componentes do formulário
@@ -15,7 +18,7 @@ public class MainFrame extends JFrame {
   JComboBox<String> cbUnidade = new JComboBox<String>();
 
   private JPanel CriaPainelPrincipal() {
-    JPanel painelPrincipal = new JPanel();
+    var painelPrincipal = new JPanel();
     int linhas = 2;
     int colunas = 1;
     int margemHorizontal = 5;
@@ -24,20 +27,30 @@ public class MainFrame extends JFrame {
     return painelPrincipal;
   }
 
+  private int buscarIdDoComboBox(String textoSelecionado) {
+    return Integer.parseInt(textoSelecionado.split(" - ")[0]);
+  }
+
   private JPanel CriaPainelBotoes() {
     JPanel painelBotoes = new JPanel();
     painelBotoes.setLayout(new GridLayout(1, 1, 5, 5));
 
-    JButton button = new JButton("Salvar");
-    button.addActionListener(new ActionListener() {
+    JButton btnSalvarEducando = new JButton("Salvar");
+    btnSalvarEducando.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        System.out.println("Clicou no botão Salvar!");
-        System.out.println("Nome do educando: " + tfNomeEducando.getText());
-        System.out.println("Etapa: " + cbEtapa.getSelectedItem());
-        System.out.println("Unidade: " + cbUnidade.getSelectedItem());
+        var etapaId = buscarIdDoComboBox(cbEtapa.getSelectedItem().toString());
+        var etapa = new EtapaDTO(etapaId, "");
+        var educando = new EducandoDTO(tfNomeEducando.getText(), etapa, null);
+        var repositorio = new EducandosDAO();
+        var registrosInseridos = repositorio.Inserir(educando);
+        if (registrosInseridos > 0) {
+          JOptionPane.showMessageDialog(null, "Educando inserido com sucesso!");
+        } else {
+          JOptionPane.showMessageDialog(null, "Erro ao inserir educando!");
+        }
       }
     });
-    painelBotoes.add(button);
+    painelBotoes.add(btnSalvarEducando);
     return painelBotoes;
   }
 

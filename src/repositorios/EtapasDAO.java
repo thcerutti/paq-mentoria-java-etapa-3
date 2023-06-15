@@ -15,4 +15,10 @@ public class EtapasDAO implements DaoInterface<EtapaDTO> {
 
     return etapas;
   }
+
+  @Override
+  public Integer Inserir(EtapaDTO objeto) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'Inserir'");
+  }
 }
